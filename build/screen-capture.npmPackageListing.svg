@@ -1,13 +1,13 @@
 <svg height="158" width="720" xmlns="http://www.w3.org/2000/svg">
 <rect height="158" fill="#555" width="720"></rect>
 <text fill="#7f7" font-family="Courier New" font-size="12" xml:space="preserve">
-<tspan x="10" y="26">  1.  2017-03-25 14:32:24 +0000      589 byte  LICENSE</tspan>
-<tspan x="10" y="42">  2.  2017-03-25 14:32:24 +0000     6121 byte  README.md</tspan>
-<tspan x="10" y="58">  3.  2017-03-25 14:32:24 +0000    25796 byte  dist/swagger-ui.css</tspan>
-<tspan x="10" y="74">  4.  2017-03-25 14:32:24 +0000       80 byte  dist/swagger-ui.css.map</tspan>
-<tspan x="10" y="90">  5.  2017-03-25 14:32:24 +0000   228570 byte  dist/swagger-ui.js</tspan>
-<tspan x="10" y="106">  6.  2017-03-25 14:32:24 +0000      158 byte  dist/swagger-ui.js.map</tspan>
-<tspan x="10" y="122">  7.  2017-03-25 14:32:24 +0000     7191 byte  package.json</tspan>
-<tspan x="10" y="138">  8.  2017-03-25 14:32:24 +0000   268505 byte  .</tspan>
+<tspan x="10" y="26">  1.  2017-03-25 16:34:51 +0000      589 byte  LICENSE</tspan>
+<tspan x="10" y="42">  2.  2017-03-25 16:34:51 +0000     6121 byte  README.md</tspan>
+<tspan x="10" y="58">  3.  2017-03-25 16:34:51 +0000    25796 byte  dist/swagger-ui.css</tspan>
+<tspan x="10" y="74">  4.  2017-03-25 16:34:51 +0000       80 byte  dist/swagger-ui.css.map</tspan>
+<tspan x="10" y="90">  5.  2017-03-25 16:34:51 +0000   228570 byte  dist/swagger-ui.js</tspan>
+<tspan x="10" y="106">  6.  2017-03-25 16:34:51 +0000      158 byte  dist/swagger-ui.js.map</tspan>
+<tspan x="10" y="122">  7.  2017-03-25 16:34:51 +0000     7191 byte  package.json</tspan>
+<tspan x="10" y="138">  8.  2017-03-25 16:34:51 +0000   268505 byte  .</tspan>
 </text>
 </svg>
