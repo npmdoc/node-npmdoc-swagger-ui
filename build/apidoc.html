@@ -51,7 +51,7 @@
 
         href="https://github.com/swagger-api/swagger-ui#readme"
 
-    >swagger-ui (v3.0.3)</a>
+    >swagger-ui (v3.0.6)</a>
 </h1>
 <h4>[![NPM version](https://badge.fury.io/js/swagger-ui.svg)](http://badge.fury.io/js/swagger-ui)</h4>
 <div class="apidocSectionDiv"><a
@@ -60,6 +60,15 @@
 ><h1>table of contents</h1></a><ol>
 
     <li class="apidocModuleLi"><a href="#apidoc.module.swagger-ui">module swagger-ui</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.swagger-ui.swagger-ui">
+            function <span class="apidocSignatureSpan"></span>swagger-ui
+            <span class="apidocSignatureSpan">(e)</span>
+            </a>
+
+        </li>
 
         <li>
 
@@ -828,6 +837,15 @@
 
             <a class="apidocElementLiA" href="#apidoc.element.swagger-ui.plugins.AuthActions.authorizeOauth2">
             function <span class="apidocSignatureSpan">swagger-ui.plugins.AuthActions.</span>authorizeOauth2
+            <span class="apidocSignatureSpan">(e)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.swagger-ui.plugins.AuthActions.authorizeOauth2Application">
+            function <span class="apidocSignatureSpan">swagger-ui.plugins.AuthActions.</span>authorizeOauth2Application
             <span class="apidocSignatureSpan">(e)</span>
             </a>
 
@@ -2192,6 +2210,28 @@
 <h1><a href="#apidoc.module.swagger-ui" id="apidoc.module.swagger-ui">module swagger-ui</a></h1>
 
 
+    <h2>
+        <a href="#apidoc.element.swagger-ui.swagger-ui" id="apidoc.element.swagger-ui.swagger-ui">
+        function <span class="apidocSignatureSpan"></span>swagger-ui
+        <span class="apidocSignatureSpan">(e)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">swagger-ui = function (e){var t={dom_id:null,spec:{},url:&#x22;&#x22;,layout:&#x22;BaseLayout&#x22;,validatorUrl:&#x22;https://online.swagger.io/validator&#x22;,configs:{},
+presets:[],plugins:[],fn:{},components:{},state:{},store:{}},r=(0,i.default)({},t,e),n=(0,i.default)({},r.store,{system:{configs
+:r.configs},plugins:r.presets,state:{layout:{layout:r.layout},spec:{spec:&#x22;&#x22;,url:r.url}}}),o=function(){return{fn:r.fn,components
+:r.components,state:r.state}},u=new l.default(n);u.register([r.plugins,o]);var s=u.getSystem(),c=(0,y.parseSeach)(),f=function(e
+){if(&#x22;object&#x22;!==(&#x22;undefined&#x22;==typeof r?&#x22;undefined&#x22;:a(r)))return s;var t=s.specSelectors.getLocalConfig?s.specSelectors.getLocalConfig
+():{},n=(0,i.default)({},r,t,e||{},c);return u.setConfigs((0,h.filterConfigs)(n)),null!==e&#x26;&#x26;(!c.url&#x26;&#x26;&#x22;object&#x22;===a(n.spec)&#x26;&#x26;Object
+.keys(n.spec).length?(s.specActions.updateUrl(&#x22;&#x22;),s.specActions.updateLoadingStatus(&#x22;success&#x22;),s.specActions.updateSpec(JSON.stringify
+(n.spec))):s.specActions.download&#x26;&#x26;n.url&#x26;&#x26;(s.specActions.updateUrl(n.url),s.specActions.download(n.url))),n.dom_id?s.render(n.dom_id
+,&#x22;App&#x22;):console.error(&#x22;Skipped rendering: no `dom_id` was specified&#x22;),s},p=c.config||r.configUrl;if(!p||!s.specActions.getConfigByUrl
+||s.specActions.getConfigByUrl&#x26;&#x26;!s.specActions.getConfigByUrl(p,f))return f()}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
 
 
 
@@ -2276,7 +2316,7 @@
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">AuthIndex = function (){return{statePlugins:{auth:{reducers:u.default,actions:s,selectors:l},spec:{wrapActions:f}}}}</pre></li>
+    <li>description and source-code<pre class="apidocCodePre">AuthIndex = function (){return{statePlugins:{auth:{reducers:u.default,actions:s,selectors:c},spec:{wrapActions:p}}}}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
@@ -2292,11 +2332,11 @@
     <li>description and source-code<pre class="apidocCodePre">function n(e){var t=e.fn,r={download:function(e){return function(r){function n(t){return t instanceof Error||t.status&#x3e;=400?(u.updateLoadingStatus
 (&#x22;failed&#x22;),o.newThrownErr(new Error(t.statusText+&#x22; &#x22;+e))):(u.updateLoadingStatus(&#x22;success&#x22;),u.updateSpec(t.text),void u.updateUrl
 (e))}var o=r.errActions,a=r.specSelectors,u=r.specActions,i=t.fetch;e=e||a.url(),u.updateLoadingStatus(&#x22;loading&#x22;),i({url:e,loadSpec
-:!0,headers:{Accept:&#x22;application/json&#x22;}}).then(n,n)}},updateLoadingStatus:function(e){var t=[null,&#x22;loading&#x22;,&#x22;failed&#x22;,&#x22;success&#x22;,&#x22;
-failedConfig&#x22;];return t.indexOf(e)===-1&#x26;&#x26;console.error(&#x22;Error: &#x22;+e+&#x22; is not one of &#x22;+JSON.stringify(t)),{type:&#x22;spec_update_loading_status
-&#x22;,payload:e}}},n={spec_update_loading_status:function(e,t){return&#x22;string&#x22;==typeof t.payload?e.set(&#x22;loadingStatus&#x22;,t.payload):e}},
-u={loadingStatus:(0,o.createSelector)(function(e){return e||(0,a.Map)()},function(e){return e.get(&#x22;loadingStatus&#x22;)||null})};return
-{statePlugins:{spec:{actions:r,reducers:n,selectors:u}}}}</pre></li>
+:!0,credentials:&#x22;same-origin&#x22;,headers:{Accept:&#x22;application/json,*/*&#x22;}}).then(n,n)}},updateLoadingStatus:function(e){var t=[null,&#x22;
+loading&#x22;,&#x22;failed&#x22;,&#x22;success&#x22;,&#x22;failedConfig&#x22;];return t.indexOf(e)===-1&#x26;&#x26;console.error(&#x22;Error: &#x22;+e+&#x22; is not one of &#x22;+JSON.stringify
+(t)),{type:&#x22;spec_update_loading_status&#x22;,payload:e}}},n={spec_update_loading_status:function(e,t){return&#x22;string&#x22;==typeof t.payload
+?e.set(&#x22;loadingStatus&#x22;,t.payload):e}},u={loadingStatus:(0,o.createSelector)(function(e){return e||(0,a.Map)()},function(e){return
+ e.get(&#x22;loadingStatus&#x22;)||null})};return{statePlugins:{spec:{actions:r,reducers:n,selectors:u}}}}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
@@ -2309,7 +2349,7 @@ u={loadingStatus:(0,o.createSelector)(function(e){return e||(0,a.Map)()},functio
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">function o(e, t){var r={jsSpec:t.specSelectors.specJson().toJS()},n=(0,i.default)(c,function(e,t){try{var n=t.transform(e,r);return
+    <li>description and source-code<pre class="apidocCodePre">function o(e, t){var r={jsSpec:t.specSelectors.specJson().toJS()},n=(0,i.default)(l,function(e,t){try{var n=t.transform(e,r);return
  n.filter(function(e){return!!e})}catch(t){return console.error(&#x22;Transformer error:&#x22;,t),e}},e);return n.filter(function(e){return
 !!e}).map(function(e){return!e.get(&#x22;line&#x22;)&#x26;&#x26;e.get(&#x22;path&#x22;),e})}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
@@ -2324,7 +2364,7 @@ u={loadingStatus:(0,o.createSelector)(function(e){return e||(0,a.Map)()},functio
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">ErrIndex = function (e){return{statePlugins:{err:{reducers:(0,u.default)(e),actions:s,selectors:l}}}}</pre></li>
+    <li>description and source-code<pre class="apidocCodePre">ErrIndex = function (e){return{statePlugins:{err:{reducers:(0,u.default)(e),actions:s,selectors:c}}}}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
@@ -2337,15 +2377,15 @@ u={loadingStatus:(0,o.createSelector)(function(e){return e||(0,a.Map)()},functio
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">ErrReducers = function (e){var t;return t={},o(t,a.NEW_THROWN_ERR,function(t,r){var n=r.payload,o=Object.assign(f,n,{type:&#x22;thrown&#x22;});return t.
-update(&#x22;errors&#x22;,function(e){return(e||(0,s.List)()).push((0,s.fromJS)(o))}).update(&#x22;errors&#x22;,function(t){return(0,p.default)(t,e.
+    <li>description and source-code<pre class="apidocCodePre">ErrReducers = function (e){var t;return t={},o(t,a.NEW_THROWN_ERR,function(t,r){var n=r.payload,o=Object.assign(p,n,{type:&#x22;thrown&#x22;});return t.
+update(&#x22;errors&#x22;,function(e){return(e||(0,s.List)()).push((0,s.fromJS)(o))}).update(&#x22;errors&#x22;,function(t){return(0,f.default)(t,e.
 getSystem())})}),o(t,a.NEW_THROWN_ERR_BATCH,function(t,r){var n=r.payload;return n=n.map(function(e){return(0,s.fromJS)(Object.assign
-(f,e,{type:&#x22;thrown&#x22;}))}),t.update(&#x22;errors&#x22;,function(e){return(e||(0,s.List)()).concat((0,s.fromJS)(n))}).update(&#x22;errors&#x22;,function
-(t){return(0,p.default)(t,e.getSystem())})}),o(t,a.NEW_SPEC_ERR,function(t,r){var n=r.payload,o=(0,s.fromJS)(n);return o=o.set(&#x22;
+(p,e,{type:&#x22;thrown&#x22;}))}),t.update(&#x22;errors&#x22;,function(e){return(e||(0,s.List)()).concat((0,s.fromJS)(n))}).update(&#x22;errors&#x22;,function
+(t){return(0,f.default)(t,e.getSystem())})}),o(t,a.NEW_SPEC_ERR,function(t,r){var n=r.payload,o=(0,s.fromJS)(n);return o=o.set(&#x22;
 type&#x22;,&#x22;spec&#x22;),t.update(&#x22;errors&#x22;,function(e){return(e||(0,s.List)()).push((0,s.fromJS)(o)).sortBy(function(e){return e.get(&#x22;line&#x22;)})}).
-update(&#x22;errors&#x22;,function(t){return(0,p.default)(t,e.getSystem())})}),o(t,a.NEW_AUTH_ERR,function(t,r){var n=r.payload,o=(0,s.fromJS
+update(&#x22;errors&#x22;,function(t){return(0,f.default)(t,e.getSystem())})}),o(t,a.NEW_AUTH_ERR,function(t,r){var n=r.payload,o=(0,s.fromJS
 )(Object.assign({},n));return o=o.set(&#x22;type&#x22;,&#x22;auth&#x22;),t.update(&#x22;errors&#x22;,function(e){return(e||(0,s.List)()).push((0,s.fromJS)(o))}).
-update(&#x22;errors&#x22;,function(t){return(0,p.default)(t,e.getSystem())})}),o(t,a.CLEAR,function(e,t){var r=t.payload;if(r){var n=c.default
+update(&#x22;errors&#x22;,function(t){return(0,f.default)(t,e.getSystem())})}),o(t,a.CLEAR,function(e,t){var r=t.payload;if(r){var n=l.default
 .fromJS((0,i.default)((e.get(&#x22;errors&#x22;)||(0,s.List)()).toJS(),r));return e.merge({errors:n})}}),t}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -2359,7 +2399,7 @@ update(&#x22;errors&#x22;,function(t){return(0,p.default)(t,e.getSystem())})}),o
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">LayoutIndex = function (){return{statePlugins:{layout:{reducers:u.default,actions:s,selectors:l}}}}</pre></li>
+    <li>description and source-code<pre class="apidocCodePre">LayoutIndex = function (){return{statePlugins:{layout:{reducers:u.default,actions:s,selectors:c}}}}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
@@ -2401,7 +2441,7 @@ t.warn=t.bind(null,&#x22;warn&#x22;),t.error=t.bind(null,&#x22;error&#x22;),t.in
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">SpecIndex = function (){return{statePlugins:{spec:{wrapActions:f,reducers:u.default,actions:s,selectors:l}}}}</pre></li>
+    <li>description and source-code<pre class="apidocCodePre">SpecIndex = function (){return{statePlugins:{spec:{wrapActions:p,reducers:u.default,actions:s,selectors:c}}}}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
@@ -2414,10 +2454,10 @@ t.warn=t.bind(null,&#x22;warn&#x22;),t.error=t.bind(null,&#x22;error&#x22;),t.in
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">function t(){var e,r,n,u;o(this,t);for(var i=arguments.length,s=Array(i),c=0;c&#x3c;i;c++)s[c]=arguments[c];return r=n=a(this,(e=t.__proto__
+    <li>description and source-code<pre class="apidocCodePre">function t(){var e,r,n,u;o(this,t);for(var i=arguments.length,s=Array(i),l=0;l&#x3c;i;l++)s[l]=arguments[l];return r=n=a(this,(e=t.__proto__
 ||Object.getPrototypeOf(t)).call.apply(e,[this].concat(s))),n.onDragFinished=function(){var e=n.props,t=e.threshold,r=e.layoutActions
-,o=n.refs.splitPane.state,a=o.position,u=o.draggedSize;n.draggedSize=u;var i=a&#x3c;=t,s=u&#x3c;=t;r.changeMode(f,i?y:s?d:h)},n.sizeFromMode
-=function(e,t){return e===d?(n.draggedSize=null,&#x22;0px&#x22;):e===y?(n.draggedSize=null,&#x22;100%&#x22;):n.draggedSize||t},u=r,a(n,u)}</pre></li>
+,o=n.refs.splitPane.state,a=o.position,u=o.draggedSize;n.draggedSize=u;var i=a&#x3c;=t,s=u&#x3c;=t;r.changeMode(p,i?h:s?d:y)},n.sizeFromMode
+=function(e,t){return e===d?(n.draggedSize=null,&#x22;0px&#x22;):e===h?(n.draggedSize=null,&#x22;100%&#x22;):n.draggedSize||t},u=r,a(n,u)}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
@@ -2470,8 +2510,8 @@ t.warn=t.bind(null,&#x22;warn&#x22;),t.error=t.bind(null,&#x22;error&#x22;),t.in
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">ViewIndex = function (e){var t=e.getComponents,r=e.getStore,n=e.getSystem,o=a.getComponent,i=a.render,s=a.makeMappedContainer,c=(0,u.memoize
-)(o.bind(null,n,r,t)),l=(0,u.memoize)(s.bind(null,n,r,c,t));return{rootInjects:{getComponent:c,makeMappedContainer:l,render:i.bind
+    <li>description and source-code<pre class="apidocCodePre">ViewIndex = function (e){var t=e.getComponents,r=e.getStore,n=e.getSystem,o=a.getComponent,i=a.render,s=a.makeMappedContainer,l=(0,u.memoize
+)(o.bind(null,n,r,t)),c=(0,u.memoize)(s.bind(null,n,r,l,t));return{rootInjects:{getComponent:l,makeMappedContainer:c,render:i.bind
 (null,n,r,o,t)}}}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -2560,7 +2600,7 @@ t.warn=t.bind(null,&#x22;warn&#x22;),t.error=t.bind(null,&#x22;error&#x22;),t.in
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">AuthIndex = function (){return{statePlugins:{auth:{reducers:u.default,actions:s,selectors:l},spec:{wrapActions:f}}}}</pre></li>
+    <li>description and source-code<pre class="apidocCodePre">AuthIndex = function (){return{statePlugins:{auth:{reducers:u.default,actions:s,selectors:c},spec:{wrapActions:p}}}}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
@@ -2576,11 +2616,11 @@ t.warn=t.bind(null,&#x22;warn&#x22;),t.error=t.bind(null,&#x22;error&#x22;),t.in
     <li>description and source-code<pre class="apidocCodePre">function n(e){var t=e.fn,r={download:function(e){return function(r){function n(t){return t instanceof Error||t.status&#x3e;=400?(u.updateLoadingStatus
 (&#x22;failed&#x22;),o.newThrownErr(new Error(t.statusText+&#x22; &#x22;+e))):(u.updateLoadingStatus(&#x22;success&#x22;),u.updateSpec(t.text),void u.updateUrl
 (e))}var o=r.errActions,a=r.specSelectors,u=r.specActions,i=t.fetch;e=e||a.url(),u.updateLoadingStatus(&#x22;loading&#x22;),i({url:e,loadSpec
-:!0,headers:{Accept:&#x22;application/json&#x22;}}).then(n,n)}},updateLoadingStatus:function(e){var t=[null,&#x22;loading&#x22;,&#x22;failed&#x22;,&#x22;success&#x22;,&#x22;
-failedConfig&#x22;];return t.indexOf(e)===-1&#x26;&#x26;console.error(&#x22;Error: &#x22;+e+&#x22; is not one of &#x22;+JSON.stringify(t)),{type:&#x22;spec_update_loading_status
-&#x22;,payload:e}}},n={spec_update_loading_status:function(e,t){return&#x22;string&#x22;==typeof t.payload?e.set(&#x22;loadingStatus&#x22;,t.payload):e}},
-u={loadingStatus:(0,o.createSelector)(function(e){return e||(0,a.Map)()},function(e){return e.get(&#x22;loadingStatus&#x22;)||null})};return
-{statePlugins:{spec:{actions:r,reducers:n,selectors:u}}}}</pre></li>
+:!0,credentials:&#x22;same-origin&#x22;,headers:{Accept:&#x22;application/json,*/*&#x22;}}).then(n,n)}},updateLoadingStatus:function(e){var t=[null,&#x22;
+loading&#x22;,&#x22;failed&#x22;,&#x22;success&#x22;,&#x22;failedConfig&#x22;];return t.indexOf(e)===-1&#x26;&#x26;console.error(&#x22;Error: &#x22;+e+&#x22; is not one of &#x22;+JSON.stringify
+(t)),{type:&#x22;spec_update_loading_status&#x22;,payload:e}}},n={spec_update_loading_status:function(e,t){return&#x22;string&#x22;==typeof t.payload
+?e.set(&#x22;loadingStatus&#x22;,t.payload):e}},u={loadingStatus:(0,o.createSelector)(function(e){return e||(0,a.Map)()},function(e){return
+ e.get(&#x22;loadingStatus&#x22;)||null})};return{statePlugins:{spec:{actions:r,reducers:n,selectors:u}}}}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
@@ -2593,7 +2633,7 @@ u={loadingStatus:(0,o.createSelector)(function(e){return e||(0,a.Map)()},functio
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">function o(e, t){var r={jsSpec:t.specSelectors.specJson().toJS()},n=(0,i.default)(c,function(e,t){try{var n=t.transform(e,r);return
+    <li>description and source-code<pre class="apidocCodePre">function o(e, t){var r={jsSpec:t.specSelectors.specJson().toJS()},n=(0,i.default)(l,function(e,t){try{var n=t.transform(e,r);return
  n.filter(function(e){return!!e})}catch(t){return console.error(&#x22;Transformer error:&#x22;,t),e}},e);return n.filter(function(e){return
 !!e}).map(function(e){return!e.get(&#x22;line&#x22;)&#x26;&#x26;e.get(&#x22;path&#x22;),e})}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
@@ -2608,7 +2648,7 @@ u={loadingStatus:(0,o.createSelector)(function(e){return e||(0,a.Map)()},functio
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">ErrIndex = function (e){return{statePlugins:{err:{reducers:(0,u.default)(e),actions:s,selectors:l}}}}</pre></li>
+    <li>description and source-code<pre class="apidocCodePre">ErrIndex = function (e){return{statePlugins:{err:{reducers:(0,u.default)(e),actions:s,selectors:c}}}}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
@@ -2621,15 +2661,15 @@ u={loadingStatus:(0,o.createSelector)(function(e){return e||(0,a.Map)()},functio
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">ErrReducers = function (e){var t;return t={},o(t,a.NEW_THROWN_ERR,function(t,r){var n=r.payload,o=Object.assign(f,n,{type:&#x22;thrown&#x22;});return t.
-update(&#x22;errors&#x22;,function(e){return(e||(0,s.List)()).push((0,s.fromJS)(o))}).update(&#x22;errors&#x22;,function(t){return(0,p.default)(t,e.
+    <li>description and source-code<pre class="apidocCodePre">ErrReducers = function (e){var t;return t={},o(t,a.NEW_THROWN_ERR,function(t,r){var n=r.payload,o=Object.assign(p,n,{type:&#x22;thrown&#x22;});return t.
+update(&#x22;errors&#x22;,function(e){return(e||(0,s.List)()).push((0,s.fromJS)(o))}).update(&#x22;errors&#x22;,function(t){return(0,f.default)(t,e.
 getSystem())})}),o(t,a.NEW_THROWN_ERR_BATCH,function(t,r){var n=r.payload;return n=n.map(function(e){return(0,s.fromJS)(Object.assign
-(f,e,{type:&#x22;thrown&#x22;}))}),t.update(&#x22;errors&#x22;,function(e){return(e||(0,s.List)()).concat((0,s.fromJS)(n))}).update(&#x22;errors&#x22;,function
-(t){return(0,p.default)(t,e.getSystem())})}),o(t,a.NEW_SPEC_ERR,function(t,r){var n=r.payload,o=(0,s.fromJS)(n);return o=o.set(&#x22;
+(p,e,{type:&#x22;thrown&#x22;}))}),t.update(&#x22;errors&#x22;,function(e){return(e||(0,s.List)()).concat((0,s.fromJS)(n))}).update(&#x22;errors&#x22;,function
+(t){return(0,f.default)(t,e.getSystem())})}),o(t,a.NEW_SPEC_ERR,function(t,r){var n=r.payload,o=(0,s.fromJS)(n);return o=o.set(&#x22;
 type&#x22;,&#x22;spec&#x22;),t.update(&#x22;errors&#x22;,function(e){return(e||(0,s.List)()).push((0,s.fromJS)(o)).sortBy(function(e){return e.get(&#x22;line&#x22;)})}).
-update(&#x22;errors&#x22;,function(t){return(0,p.default)(t,e.getSystem())})}),o(t,a.NEW_AUTH_ERR,function(t,r){var n=r.payload,o=(0,s.fromJS
+update(&#x22;errors&#x22;,function(t){return(0,f.default)(t,e.getSystem())})}),o(t,a.NEW_AUTH_ERR,function(t,r){var n=r.payload,o=(0,s.fromJS
 )(Object.assign({},n));return o=o.set(&#x22;type&#x22;,&#x22;auth&#x22;),t.update(&#x22;errors&#x22;,function(e){return(e||(0,s.List)()).push((0,s.fromJS)(o))}).
-update(&#x22;errors&#x22;,function(t){return(0,p.default)(t,e.getSystem())})}),o(t,a.CLEAR,function(e,t){var r=t.payload;if(r){var n=c.default
+update(&#x22;errors&#x22;,function(t){return(0,f.default)(t,e.getSystem())})}),o(t,a.CLEAR,function(e,t){var r=t.payload;if(r){var n=l.default
 .fromJS((0,i.default)((e.get(&#x22;errors&#x22;)||(0,s.List)()).toJS(),r));return e.merge({errors:n})}}),t}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -2643,7 +2683,7 @@ update(&#x22;errors&#x22;,function(t){return(0,p.default)(t,e.getSystem())})}),o
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">LayoutIndex = function (){return{statePlugins:{layout:{reducers:u.default,actions:s,selectors:l}}}}</pre></li>
+    <li>description and source-code<pre class="apidocCodePre">LayoutIndex = function (){return{statePlugins:{layout:{reducers:u.default,actions:s,selectors:c}}}}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
@@ -2685,7 +2725,7 @@ t.warn=t.bind(null,&#x22;warn&#x22;),t.error=t.bind(null,&#x22;error&#x22;),t.in
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">SpecIndex = function (){return{statePlugins:{spec:{wrapActions:f,reducers:u.default,actions:s,selectors:l}}}}</pre></li>
+    <li>description and source-code<pre class="apidocCodePre">SpecIndex = function (){return{statePlugins:{spec:{wrapActions:p,reducers:u.default,actions:s,selectors:c}}}}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
@@ -2698,10 +2738,10 @@ t.warn=t.bind(null,&#x22;warn&#x22;),t.error=t.bind(null,&#x22;error&#x22;),t.in
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">function t(){var e,r,n,u;o(this,t);for(var i=arguments.length,s=Array(i),c=0;c&#x3c;i;c++)s[c]=arguments[c];return r=n=a(this,(e=t.__proto__
+    <li>description and source-code<pre class="apidocCodePre">function t(){var e,r,n,u;o(this,t);for(var i=arguments.length,s=Array(i),l=0;l&#x3c;i;l++)s[l]=arguments[l];return r=n=a(this,(e=t.__proto__
 ||Object.getPrototypeOf(t)).call.apply(e,[this].concat(s))),n.onDragFinished=function(){var e=n.props,t=e.threshold,r=e.layoutActions
-,o=n.refs.splitPane.state,a=o.position,u=o.draggedSize;n.draggedSize=u;var i=a&#x3c;=t,s=u&#x3c;=t;r.changeMode(f,i?y:s?d:h)},n.sizeFromMode
-=function(e,t){return e===d?(n.draggedSize=null,&#x22;0px&#x22;):e===y?(n.draggedSize=null,&#x22;100%&#x22;):n.draggedSize||t},u=r,a(n,u)}</pre></li>
+,o=n.refs.splitPane.state,a=o.position,u=o.draggedSize;n.draggedSize=u;var i=a&#x3c;=t,s=u&#x3c;=t;r.changeMode(p,i?h:s?d:y)},n.sizeFromMode
+=function(e,t){return e===d?(n.draggedSize=null,&#x22;0px&#x22;):e===h?(n.draggedSize=null,&#x22;100%&#x22;):n.draggedSize||t},u=r,a(n,u)}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
@@ -2754,8 +2794,8 @@ t.warn=t.bind(null,&#x22;warn&#x22;),t.error=t.bind(null,&#x22;error&#x22;),t.in
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">ViewIndex = function (e){var t=e.getComponents,r=e.getStore,n=e.getSystem,o=a.getComponent,i=a.render,s=a.makeMappedContainer,c=(0,u.memoize
-)(o.bind(null,n,r,t)),l=(0,u.memoize)(s.bind(null,n,r,c,t));return{rootInjects:{getComponent:c,makeMappedContainer:l,render:i.bind
+    <li>description and source-code<pre class="apidocCodePre">ViewIndex = function (e){var t=e.getComponents,r=e.getStore,n=e.getSystem,o=a.getComponent,i=a.render,s=a.makeMappedContainer,l=(0,u.memoize
+)(o.bind(null,n,r,t)),c=(0,u.memoize)(s.bind(null,n,r,l,t));return{rootInjects:{getComponent:l,makeMappedContainer:c,render:i.bind
 (null,n,r,o,t)}}}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -2817,7 +2857,7 @@ t.warn=t.bind(null,&#x22;warn&#x22;),t.error=t.bind(null,&#x22;error&#x22;),t.in
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function o(e, t){function r(e,t,o){if(!e)return o&#x26;&#x26;o.start_mark?o.start_mark.line:0;if(t.length&#x26;&#x26;e.tag===v)for(n=0;n&#x3c;e.value.length
-;n++){var a=e.value[n],u=a[0],i=a[1];if(u.value===t[0])return r(i,t.slice(1),e);if(u.value===t[0].replace(/\[.*/,&#x22;&#x22;)){var s=parseInt(t[0].match(/\[(.*)\]/)[1]);if(1===i.value.length&#x26;&#x26;0!==s&#x26;&#x26;s)var c=(0,y.default)(i.value[0],{value:s.toString()});else var c=i.value[s];return r(c,t.slice(1),i.value)}}if(t.length&#x26;&#x26;e.tag===b){var l=e.value[t[0]];if(l&#x26;&#x26;l.tag)return r(l,t.slice(1),e.value)}return e.tag!==v||Array.isArray(o)?e.start_mark.line+1:e.start_mark.line}if(&#x22;string&#x22;!=typeof e)throw new TypeError(&#x22;yaml should be a string&#x22;);if(!(0,f.default)(t))throw new TypeError(&#x22;path should be an array of strings&#x22;);var n=0,o=m(e);return r(o,t)}</pre></li>
+;n++){var a=e.value[n],u=a[0],i=a[1];if(u.value===t[0])return r(i,t.slice(1),e);if(u.value===t[0].replace(/\[.*/,&#x22;&#x22;)){var s=parseInt(t[0].match(/\[(.*)\]/)[1]);if(1===i.value.length&#x26;&#x26;0!==s&#x26;&#x26;s)var l=(0,h.default)(i.value[0],{value:s.toString()});else var l=i.value[s];return r(l,t.slice(1),i.value)}}if(t.length&#x26;&#x26;e.tag===b){var c=e.value[t[0]];if(c&#x26;&#x26;c.tag)return r(c,t.slice(1),e.value)}return e.tag!==v||Array.isArray(o)?e.start_mark.line+1:e.start_mark.line}if(&#x22;string&#x22;!=typeof e)throw new TypeError(&#x22;yaml should be a string&#x22;);if(!(0,p.default)(t))throw new TypeError(&#x22;path should be an array of strings&#x22;);var n=0,o=m(e);return r(o,t)}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
@@ -2848,7 +2888,7 @@ void 0,r))})}</pre></li>
 column&#x3c;=t.column&#x26;&#x26;e.end_mark.column&#x3e;=t.column:t.line===e.start_mark.line?t.column&#x3e;=e.start_mark.column:t.line===e.end_mark.line?
 t.column&#x3c;=e.end_mark.column:e.start_mark.line&#x3c;t.line&#x26;&#x26;e.end_mark.line&#x3e;t.line}var a=0;if(!e||[v,b].indexOf(e.tag)===-1)return o;if
 (e.tag===v)for(a=0;a&#x3c;e.value.length;a++){var u=e.value[a],i=u[0],s=u[1];if(n(i))return o;if(n(s))return o.push(i.value),r(s)}if(
-e.tag===b)for(a=0;a&#x3c;e.value.length;a++){var c=e.value[a];if(n(c))return o.push(a.toString()),r(c)}return o}if(&#x22;string&#x22;!=typeof e
+e.tag===b)for(a=0;a&#x3c;e.value.length;a++){var l=e.value[a];if(n(l))return o.push(a.toString()),r(l)}return o}if(&#x22;string&#x22;!=typeof e
 )throw new TypeError(&#x22;yaml should be a string&#x22;);if(&#x22;object&#x22;!==(&#x22;undefined&#x22;==typeof t?&#x22;undefined&#x22;:s(t))||&#x22;number&#x22;!=typeof t.line||&#x22;
 number&#x22;!=typeof t.column)throw new TypeError(&#x22;position should be an object with line and column properties&#x22;);try{var n=m(e)}catch
 (r){return console.error(&#x22;Error composing AST&#x22;,r),console.error(&#x22;Problem area:\n&#x22;,e.split(&#x22;\n&#x22;).slice(t.line-5,t.line+5).join(&#x22;\n&#x22;)),null}var o=[];return r(n)}</pre></li>
@@ -2881,7 +2921,7 @@ void 0,r))})}</pre></li>
     <li>description and source-code<pre class="apidocCodePre">function a(e, t){function r(e){if(e.tag===v)for(o=0;o&#x3c;e.value.length;o++){var a=e.value[o],u=a[0],i=a[1];if(u.value===t[0])return
  t.shift(),r(i)}if(e.tag===b){var s=e.value[t[0]];if(s&#x26;&#x26;s.tag)return t.shift(),r(s)}return t.length?n:{start:{line:e.start_mark.
 line,column:e.start_mark.column},end:{line:e.end_mark.line,column:e.end_mark.column}}}if(&#x22;string&#x22;!=typeof e)throw new TypeError(&#x22;
-yaml should be a string&#x22;);if(!(0,f.default)(t))throw new TypeError(&#x22;path should be an array of strings&#x22;);var n={start:{line:-1,column
+yaml should be a string&#x22;);if(!(0,p.default)(t))throw new TypeError(&#x22;path should be an array of strings&#x22;);var n={start:{line:-1,column
 :-1},end:{line:-1,column:-1}},o=0,a=m(e);return r(a)}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -2914,7 +2954,7 @@ void 0,r))})}</pre></li>
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">function a(e){return{type:d,payload:e}}</pre></li>
+    <li>description and source-code<pre class="apidocCodePre">function a(e){return{type:p,payload:e}}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
@@ -2934,19 +2974,36 @@ void 0,r))})}</pre></li>
 
 
     <h2>
+        <a href="#apidoc.element.swagger-ui.plugins.AuthActions.authorizeOauth2Application" id="apidoc.element.swagger-ui.plugins.AuthActions.authorizeOauth2Application">
+        function <span class="apidocSignatureSpan">swagger-ui.plugins.AuthActions.</span>authorizeOauth2Application
+        <span class="apidocSignatureSpan">(e)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">authorizeOauth2Application = function (e){return function(t){var r=t.fn,n=t.authActions,o=t.errActions,a=e.schema,u=e.scopes,i=e.name,s=e.clientId,l=e.clientSecret
+;r.fetch(a.get(&#x22;tokenUrl&#x22;),{method:&#x22;post&#x22;,headers:{Accept:&#x22;application/json, text/plain, */*&#x22;,&#x22;Content-Type&#x22;:&#x22;application/x-www-
+form-urlencoded&#x22;},body:&#x22;grant_type=client_credentials&#x26;client_id=&#x22;+encodeURIComponent(s)+&#x22;&#x26;client_secret=&#x22;+encodeURIComponent(l)+&#x22;&#x26;
+scope=&#x22;+encodeURIComponent(u.join(y))}).then(function(t){return t.ok?void t.json().then(function(t){n.authorizeOauth2({auth:e,token
+:t})}):void o.newAuthErr({authId:i,level:&#x22;error&#x22;,source:&#x22;auth&#x22;,message:t.statusText})}).catch(function(e){o.newAuthErr(e)})}}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
         <a href="#apidoc.element.swagger-ui.plugins.AuthActions.authorizePassword" id="apidoc.element.swagger-ui.plugins.AuthActions.authorizePassword">
         function <span class="apidocSignatureSpan">swagger-ui.plugins.AuthActions.</span>authorizePassword
         <span class="apidocSignatureSpan">(e)</span>
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">authorizePassword = function (e){return function(t){var r=t.fn,n=t.authActions,o=t.errActions,a=e.schema,u=e.name,i=e.username,s=e.password,c=e.passwordType
-,l=e.clientId,f=e.clientSecret,d={url:a.get(&#x22;tokenUrl&#x22;),method:&#x22;post&#x22;,headers:{&#x22;content-type&#x22;:&#x22;application/x-www-form-urlencoded
-&#x22;},query:{grant_type:&#x22;password&#x22;,username:i,password:s}};return&#x22;basic&#x22;===c?d.headers.authorization=&#x22;Basic &#x22;+(0,p.default)(l+&#x22;:&#x22;+f
-):&#x22;request&#x22;===c&#x26;&#x26;(d.query=Object.assign(d.query,{client_id:l,client_secret:f})),r.fetch(d).then(function(t){var r=JSON.parse(t.data
-),a=r&#x26;&#x26;(r.error||&#x22;&#x22;),i=r&#x26;&#x26;(r.parseError||&#x22;&#x22;);return t.ok?a||i?void o.newAuthErr({authId:u,level:&#x22;error&#x22;,source:&#x22;auth&#x22;,message:JSON
-.stringify(r)}):void n.authorizeOauth2({auth:e,token:r}):void o.newAuthErr({authId:u,level:&#x22;error&#x22;,source:&#x22;auth&#x22;,message:t.statusText
-})}).catch(function(e){o.newAuthErr(e)})}}</pre></li>
+    <li>description and source-code<pre class="apidocCodePre">authorizePassword = function (e){return function(t){var r=t.fn,n=t.authActions,o=t.errActions,a=e.schema,u=e.name,i=e.username,s=e.password,l=e.passwordType
+,f=e.clientId,p=e.clientSecret,d={url:a.get(&#x22;tokenUrl&#x22;),method:&#x22;post&#x22;,headers:{&#x22;content-type&#x22;:&#x22;application/x-www-form-urlencoded
+&#x22;},query:{grant_type:&#x22;password&#x22;,username:i,password:s,scopes:encodeURIComponent(e.scopes.join(y))}};return&#x22;basic&#x22;===l?d.headers.
+authorization=&#x22;Basic &#x22;+(0,c.btoa)(f+&#x22;:&#x22;+p):&#x22;request&#x22;===l&#x26;&#x26;(d.query=Object.assign(d.query,{client_id:f,client_secret:p})),r.fetch
+(d).then(function(t){var r=JSON.parse(t.data),a=r&#x26;&#x26;(r.error||&#x22;&#x22;),i=r&#x26;&#x26;(r.parseError||&#x22;&#x22;);return t.ok?a||i?void o.newAuthErr({authId
+:u,level:&#x22;error&#x22;,source:&#x22;auth&#x22;,message:JSON.stringify(r)}):void n.authorizeOauth2({auth:e,token:r}):void o.newAuthErr({authId:u,
+level:&#x22;error&#x22;,source:&#x22;auth&#x22;,message:t.statusText})}).catch(function(e){o.newAuthErr(e)})}}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
@@ -2959,7 +3016,7 @@ void 0,r))})}</pre></li>
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">function u(e){return{type:y,payload:e}}</pre></li>
+    <li>description and source-code<pre class="apidocCodePre">function u(e){return{type:d,payload:e}}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
@@ -2972,8 +3029,8 @@ void 0,r))})}</pre></li>
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">preAuthorizeOauth2 = function (e){return function(t){var r=t.authActions,n=t.errActions,o=e.auth,a=e.token,u=e.isValid,i=o.schema,s=o.name,l=i.get(&#x22;flow
-&#x22;);return delete c.default.swaggerUIRedirectOauth2,&#x22;accessCode&#x22;===l||u||n.newAuthErr({authId:s,source:&#x22;auth&#x22;,level:&#x22;warning&#x22;,message
+    <li>description and source-code<pre class="apidocCodePre">preAuthorizeOauth2 = function (e){return function(t){var r=t.authActions,n=t.errActions,o=e.auth,a=e.token,u=e.isValid,i=o.schema,s=o.name,c=i.get(&#x22;flow
+&#x22;);return delete l.default.swaggerUIRedirectOauth2,&#x22;accessCode&#x22;===c||u||n.newAuthErr({authId:s,source:&#x22;auth&#x22;,level:&#x22;warning&#x22;,message
 :&#x22;Authorization may be unsafe, passed state was changed in server Passed state wasn&#x27;t returned from auth server&#x22;}),a.error?void
 n.newAuthErr({authId:s,source:&#x22;auth&#x22;,level:&#x22;error&#x22;,message:JSON.stringify(a)}):void r.authorizeOauth2({auth:o,token:a})}}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
@@ -3018,9 +3075,9 @@ n.newAuthErr({authId:s,source:&#x22;auth&#x22;,level:&#x22;error&#x22;,message:J
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">authorize = function (e, t){var r=t.payload,n=(0,i.fromJS)(r),o=e.get(&#x22;authorized&#x22;)||(0,i.Map)();return n.entrySeq().forEach(function(e){var
-t=u(e,2),r=t[0],n=t[1],a=n.getIn([&#x22;schema&#x22;,&#x22;type&#x22;]);if(&#x22;apiKey&#x22;===a)o=o.set(r,n);else if(&#x22;basic&#x22;===a){var i=n.getIn([&#x22;value&#x22;,&#x22;username
-&#x22;]),s=n.getIn([&#x22;value&#x22;,&#x22;password&#x22;]);o=o.setIn([r,&#x22;value&#x22;],{username:i,header:&#x22;Basic &#x22;+(0,c.default)(i+&#x22;:&#x22;+s)}),o=o.setIn([r,&#x22;schema
+    <li>description and source-code<pre class="apidocCodePre">authorize = function (e, t){var r=t.payload,n=(0,u.fromJS)(r),o=e.get(&#x22;authorized&#x22;)||(0,u.Map)();return n.entrySeq().forEach(function(e){var
+t=a(e,2),r=t[0],n=t[1],u=n.getIn([&#x22;schema&#x22;,&#x22;type&#x22;]);if(&#x22;apiKey&#x22;===u)o=o.set(r,n);else if(&#x22;basic&#x22;===u){var s=n.getIn([&#x22;value&#x22;,&#x22;username
+&#x22;]),l=n.getIn([&#x22;value&#x22;,&#x22;password&#x22;]);o=o.setIn([r,&#x22;value&#x22;],{username:s,header:&#x22;Basic &#x22;+(0,i.btoa)(s+&#x22;:&#x22;+l)}),o=o.setIn([r,&#x22;schema
 &#x22;],n.get(&#x22;schema&#x22;))}}),e.set(&#x22;authorized&#x22;,o)}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -3034,7 +3091,7 @@ t=u(e,2),r=t[0],n=t[1],a=n.getIn([&#x22;schema&#x22;,&#x22;type&#x22;]);if(&#x22
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">authorize_oauth2 = function (e, t){var r=t.payload,n=r.auth,o=r.token,a=void 0;return n.token=o,a=(0,i.fromJS)(n),e.setIn([&#x22;authorized&#x22;,a.get(&#x22;name&#x22;)],
+    <li>description and source-code<pre class="apidocCodePre">authorize_oauth2 = function (e, t){var r=t.payload,n=r.auth,o=r.token,a=void 0;return n.token=o,a=(0,u.fromJS)(n),e.setIn([&#x22;authorized&#x22;,a.get(&#x22;name&#x22;)],
 a)}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -3140,8 +3197,8 @@ u.size&#x26;&#x26;(s=i.get(&#x22;scopes&#x22;),s.keySeq().forEach(function(e){u.
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">isAuthorized = function (e, t){return function(e){var r=e.authSelectors,n=r.authorized();return!!t.toJS().filter(function(e){var t=!0;return Object
-.keys(e).map(function(e){return!t||!!n.get(e)}).indexOf(!1)===-1}).length}}</pre></li>
+    <li>description and source-code<pre class="apidocCodePre">isAuthorized = function (e, t){return function(e){var r=e.authSelectors,n=r.authorized();return a.List.isList(t)?!!t.toJS().filter(function(e){var
+ t=!0;return Object.keys(e).map(function(e){return!t||!!n.get(e)}).indexOf(!1)===-1}).length:null}}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
@@ -3181,9 +3238,9 @@ u.size&#x26;&#x26;(s=i.get(&#x22;scopes&#x22;),s.keySeq().forEach(function(e){u.
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">execute = function (e, t){var n=t.authSelectors,o=t.specSelectors;return function(t){var a=t.path,u=t.method,i=t.operation,s=t.extras,c={authorized
+    <li>description and source-code<pre class="apidocCodePre">execute = function (e, t){var n=t.authSelectors,o=t.specSelectors;return function(t){var a=t.path,u=t.method,i=t.operation,s=t.extras,l={authorized
 :n.authorized()&#x26;&#x26;n.authorized().toJS(),definitions:o.securityDefinitions()&#x26;&#x26;o.securityDefinitions().toJS(),specSecurity:o.security
-()&#x26;&#x26;o.security().toJS()};return e(r({path:a,method:u,operation:i,securities:c},s))}}</pre></li>
+()&#x26;&#x26;o.security().toJS()};return e(r({path:a,method:u,operation:i,securities:l},s))}}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
@@ -3201,7 +3258,7 @@ u.size&#x26;&#x26;(s=i.get(&#x22;scopes&#x22;),s.keySeq().forEach(function(e){u.
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">function s(){var e=arguments.length&#x3e;0&#x26;&#x26;void 0!==arguments[0]?arguments[0]:{};return{type:h,payload:e}}</pre></li>
+    <li>description and source-code<pre class="apidocCodePre">function s(){var e=arguments.length&#x3e;0&#x26;&#x26;void 0!==arguments[0]?arguments[0]:{};return{type:y,payload:e}}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
@@ -3214,7 +3271,7 @@ u.size&#x26;&#x26;(s=i.get(&#x22;scopes&#x22;),s.keySeq().forEach(function(e){u.
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">function i(e){return{type:y,payload:e}}</pre></li>
+    <li>description and source-code<pre class="apidocCodePre">function i(e){return{type:h,payload:e}}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
@@ -3240,7 +3297,7 @@ u.size&#x26;&#x26;(s=i.get(&#x22;scopes&#x22;),s.keySeq().forEach(function(e){u.
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">function o(e, t){return{type:p,payload:{action:t,error:(0,l.default)(e)}}}</pre></li>
+    <li>description and source-code<pre class="apidocCodePre">function o(e, t){return{type:f,payload:{action:t,error:(0,c.default)(e)}}}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
@@ -3253,7 +3310,7 @@ u.size&#x26;&#x26;(s=i.get(&#x22;scopes&#x22;),s.keySeq().forEach(function(e){u.
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">function a(e){return{type:f,payload:e}}</pre></li>
+    <li>description and source-code<pre class="apidocCodePre">function a(e){return{type:p,payload:e}}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
@@ -3399,7 +3456,7 @@ thing:e,mode:t}}}</pre></li>
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">function o(e){var t=!(arguments.length&#x3e;1&#x26;&#x26;void 0!==arguments[1])||arguments[1];return e=(0,u.normalizeArray)(e),{type:c,payload:{
+    <li>description and source-code<pre class="apidocCodePre">function o(e){var t=!(arguments.length&#x3e;1&#x26;&#x26;void 0!==arguments[1])||arguments[1];return e=(0,u.normalizeArray)(e),{type:l,payload:{
 thing:e,shown:t}}}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -3645,10 +3702,10 @@ concat(n(t)),r)}</pre></li>
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function e(t){var r=arguments.length&#x3e;1&#x26;&#x26;void 0!==arguments[1]?arguments[1]:{},n=(0,a.objectify)(t),o=n.type,u=n.example,i=n.properties
-,s=n.additionalProperties,c=n.items,l=r.includeReadOnly;if(void 0!==u)return u;if(!o)if(i)o=&#x22;object&#x22;;else{if(!c)return;o=&#x22;array&#x22;}
-if(&#x22;object&#x22;===o){var f=(0,a.objectify)(i),d={};for(var y in f)f[y].readOnly&#x26;&#x26;!l||(d[y]=e(f[y]));if(s===!0)d.additionalProp1={};else
- if(s)for(var h=(0,a.objectify)(s),m=e(h),v=1;v&#x3c;4;v++)d[&#x22;additionalProp&#x22;+v]=m;return d}return&#x22;array&#x22;===o?[e(c)]:t.enum?t.default
-?t.default:(0,a.normalizeArray)(t.enum)[0]:p(t)}</pre></li>
+,s=n.additionalProperties,l=n.items,c=r.includeReadOnly;if(void 0!==u)return u;if(!o)if(i)o=&#x22;object&#x22;;else{if(!l)return;o=&#x22;array&#x22;}
+if(&#x22;object&#x22;===o){var p=(0,a.objectify)(i),d={};for(var h in p)p[h].readOnly&#x26;&#x26;!c||(d[h]=e(p[h],{includeReadOnly:c}));if(s===!0)d.
+additionalProp1={};else if(s)for(var y=(0,a.objectify)(s),m=e(y,{includeReadOnly:c}),v=1;v&#x3c;4;v++)d[&#x22;additionalProp&#x22;+v]=m;return
+d}return&#x22;array&#x22;===o?[e(l,{includeReadOnly:c})]:t.enum?t.default?t.default:(0,a.normalizeArray)(t.enum)[0]:f(t)}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
@@ -3662,17 +3719,17 @@ if(&#x22;object&#x22;===o){var f=(0,a.objectify)(i),d={};for(var y in f)f[y].rea
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function e(t){var r=arguments.length&#x3e;1&#x26;&#x26;void 0!==arguments[1]?arguments[1]:{},n=(0,a.objectify)(t),o=n.type,u=n.properties,i=n.additionalProperties
-,s=n.items,c=n.example,l=r.includeReadOnly,f=n.default,d={},y={},h=t.xml,m=h.name,v=h.prefix,b=h.namespace,g=n.enum,_=void 0,E=void
- 0;if(!o)if(u||i)o=&#x22;object&#x22;;else{if(!s)return;o=&#x22;array&#x22;}if(m=m||&#x22;notagname&#x22;,_=(v?v+&#x22;:&#x22;:&#x22;&#x22;)+m,b){var j=v?&#x22;xmlns:&#x22;+v:&#x22;xmlns&#x22;;y[j]=
-b}if(&#x22;array&#x22;===o&#x26;&#x26;s){if(s.xml=s.xml||h||{},s.xml.name=s.xml.name||h.name,h.wrapped)return d[_]=[],Array.isArray(c)?c.forEach(function
-(t){s.example=t,d[_].push(e(s,r))}):Array.isArray(f)?f.forEach(function(t){s.default=t,d[_].push(e(s,r))}):d[_]=[e(s,r)],y&#x26;&#x26;d[_].
-push({_attr:y}),d;var w=[];return Array.isArray(c)?(c.forEach(function(t){s.example=t,w.push(e(s,r))}),w):Array.isArray(f)?(f.forEach
-(function(t){s.default=t,w.push(e(s,r))}),w):e(s,r)}if(&#x22;object&#x22;===o){var O=(0,a.objectify)(u);d[_]=[],c=c||{};for(var P in O)if(!
-O[P].readOnly||l)if(O[P].xml=O[P].xml||{},O[P].xml.attribute){var T=Array.isArray(O[P].enum)&#x26;&#x26;O[P].enum[0],S=O[P].example,x=O[P].
-default;y[O[P].xml.name||P]=void 0!==S&#x26;&#x26;S||void 0!==c[P]&#x26;&#x26;c[P]||void 0!==x&#x26;&#x26;x||T||p(O[P])}else{O[P].xml.name=O[P].xml.name||P,O[
-P].example=void 0!==O[P].example?O[P].example:c[P];var C=e(O[P]);Array.isArray(C)?d[_]=d[_].concat(C):d[_].push(C)}return i===!0
-?d[_].push({additionalProp:&#x22;Anything can be here&#x22;}):i&#x26;&#x26;d[_].push({additionalProp:p(i)}),y&#x26;&#x26;d[_].push({_attr:y}),d}return E=void
-0!==c?c:void 0!==f?f:Array.isArray(g)?g[0]:p(t),d[_]=y?[{_attr:y},E]:E,d}</pre></li>
+,s=n.items,l=n.example,c=r.includeReadOnly,p=n.default,d={},h={},y=t.xml,m=y.name,v=y.prefix,b=y.namespace,g=n.enum,_=void 0,E=void
+ 0;if(!o)if(u||i)o=&#x22;object&#x22;;else{if(!s)return;o=&#x22;array&#x22;}if(m=m||&#x22;notagname&#x22;,_=(v?v+&#x22;:&#x22;:&#x22;&#x22;)+m,b){var w=v?&#x22;xmlns:&#x22;+v:&#x22;xmlns&#x22;;h[w]=
+b}if(&#x22;array&#x22;===o&#x26;&#x26;s){if(s.xml=s.xml||y||{},s.xml.name=s.xml.name||y.name,y.wrapped)return d[_]=[],Array.isArray(l)?l.forEach(function
+(t){s.example=t,d[_].push(e(s,r))}):Array.isArray(p)?p.forEach(function(t){s.default=t,d[_].push(e(s,r))}):d[_]=[e(s,r)],h&#x26;&#x26;d[_].
+push({_attr:h}),d;var j=[];return Array.isArray(l)?(l.forEach(function(t){s.example=t,j.push(e(s,r))}),j):Array.isArray(p)?(p.forEach
+(function(t){s.default=t,j.push(e(s,r))}),j):e(s,r)}if(&#x22;object&#x22;===o){var P=(0,a.objectify)(u);d[_]=[],l=l||{};for(var O in P)if(!
+P[O].readOnly||c)if(P[O].xml=P[O].xml||{},P[O].xml.attribute){var T=Array.isArray(P[O].enum)&#x26;&#x26;P[O].enum[0],S=P[O].example,x=P[O].
+default;h[P[O].xml.name||O]=void 0!==S&#x26;&#x26;S||void 0!==l[O]&#x26;&#x26;l[O]||void 0!==x&#x26;&#x26;x||T||f(P[O])}else{P[O].xml.name=P[O].xml.name||O,P[
+O].example=void 0!==P[O].example?P[O].example:l[O];var C=e(P[O]);Array.isArray(C)?d[_]=d[_].concat(C):d[_].push(C)}return i===!0
+?d[_].push({additionalProp:&#x22;Anything can be here&#x22;}):i&#x26;&#x26;d[_].push({additionalProp:f(i)}),h&#x26;&#x26;d[_].push({_attr:h}),d}return E=void
+0!==l?l:void 0!==p?p:Array.isArray(g)?g[0]:f(t),d[_]=h?[{_attr:h},E]:E,d}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
@@ -3690,7 +3747,7 @@ P].example=void 0!==O[P].example?O[P].example:c[P];var C=e(O[P]);Array.isArray(C
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">function f(e, t){return{type:M,payload:{path:e,value:t,key:&#x22;consumes_value&#x22;}}}</pre></li>
+    <li>description and source-code<pre class="apidocCodePre">function p(e, t){return{type:I,payload:{path:e,value:t,key:&#x22;consumes_value&#x22;}}}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
@@ -3703,7 +3760,7 @@ P].example=void 0!==O[P].example?O[P].example:c[P];var C=e(O[P]);Array.isArray(C
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">function c(e, t, r, n){return{type:T,payload:{path:e,value:r,paramName:t,isXml:n}}}</pre></li>
+    <li>description and source-code<pre class="apidocCodePre">function l(e, t, r, n){return{type:x,payload:{path:e,value:r,paramName:t,isXml:n}}}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
@@ -3716,7 +3773,7 @@ P].example=void 0!==O[P].example?O[P].example:c[P];var C=e(O[P]);Array.isArray(C
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">function d(e, t){return{type:M,payload:{path:e,value:t,key:&#x22;produces_value&#x22;}}}</pre></li>
+    <li>description and source-code<pre class="apidocCodePre">function d(e, t){return{type:I,payload:{path:e,value:t,key:&#x22;produces_value&#x22;}}}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
@@ -3729,7 +3786,7 @@ P].example=void 0!==O[P].example?O[P].example:c[P];var C=e(O[P]);Array.isArray(C
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">function h(e, t){return{type:R,payload:{path:e,method:t}}}</pre></li>
+    <li>description and source-code<pre class="apidocCodePre">function y(e, t){return{type:M,payload:{path:e,method:t}}}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
@@ -3742,7 +3799,7 @@ P].example=void 0!==O[P].example?O[P].example:c[P];var C=e(O[P]);Array.isArray(C
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">function y(e, t){return{type:A,payload:{path:e,method:t}}}</pre></li>
+    <li>description and source-code<pre class="apidocCodePre">function h(e, t){return{type:q,payload:{path:e,method:t}}}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
@@ -3755,7 +3812,7 @@ P].example=void 0!==O[P].example?O[P].example:c[P];var C=e(O[P]);Array.isArray(C
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">function p(e){return{type:q,payload:{pathMethod:e}}}</pre></li>
+    <li>description and source-code<pre class="apidocCodePre">function f(e){return{type:N,payload:{pathMethod:e}}}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
@@ -3769,9 +3826,9 @@ P].example=void 0!==O[P].example?O[P].example:c[P];var C=e(O[P]);Array.isArray(C
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">execute = function (){var e=arguments.length&#x3e;0&#x26;&#x26;void 0!==arguments[0]?arguments[0]:{},t=e.path,r=e.method,n=o(e,[&#x22;path&#x22;,&#x22;method&#x22;]);return
-function(e){var o=e.fn.fetch,a=e.specSelectors,u=e.specActions,i=a.spec().toJS(),s=a.operationScheme(t,r),c=a.contentTypeValues([
-t,r]).toJS(),l=c.requestContentType,p=c.responseContentType,f=/xml/i.test(l),d=a.parameterValues([t,r],f).toJS();return u.executeRequest
-(v({fetch:o,spec:i,pathName:t,method:r,parameters:d,requestContentType:l,scheme:s,responseContentType:p},n))}}</pre></li>
+function(e){var o=e.fn.fetch,a=e.specSelectors,u=e.specActions,i=a.spec().toJS(),s=a.operationScheme(t,r),l=a.contentTypeValues([
+t,r]).toJS(),c=l.requestContentType,f=l.responseContentType,p=/xml/i.test(c),d=a.parameterValues([t,r],p).toJS();return u.executeRequest
+(v({fetch:o,spec:i,pathName:t,method:r,parameters:d,requestContentType:c,scheme:s,responseContentType:f},n))}}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
@@ -3784,10 +3841,10 @@ t,r]).toJS(),l=c.requestContentType,p=c.responseContentType,f=/xml/i.test(l),d=a
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">executeRequest = function (e){return function(t){var r=t.fn,n=t.specActions,o=t.specSelectors,a=e.pathName,u=e.method,i=Object.assign({contextUrl
-:o.url()},e);return a&#x26;&#x26;u&#x26;&#x26;(i.operationId=u.toLowerCase()+&#x22;-&#x22;+a),i=r.buildRequest(i),n.setRequest(e.pathName,e.method,i),r.execute
-(e).then(function(t){return n.setResponse(e.pathName,e.method,t)}).catch(function(t){return n.setResponse(e.pathName,e.method,{error
-:!0,err:(0,j.default)(t)})})}}</pre></li>
+    <li>description and source-code<pre class="apidocCodePre">executeRequest = function (e){return function(t){var r=t.fn,n=t.specActions,o=t.specSelectors,a=e.pathName,u=e.method;e.contextUrl=(0,w.default)(
+o.url()).toString();var i=Object.assign({},e);return a&#x26;&#x26;u&#x26;&#x26;(i.operationId=u.toLowerCase()+&#x22;-&#x22;+a),i=r.buildRequest(i),n.setRequest
+(e.pathName,e.method,i),r.execute(e).then(function(t){return n.setResponse(e.pathName,e.method,t)}).catch(function(t){return n.setResponse
+(e.pathName,e.method,{error:!0,err:(0,P.default)(t)})})}}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
@@ -3843,10 +3900,10 @@ u=_.default.safeLoad(e)}catch(e){return console.error(e),o.newSpecErr({source:&#
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">resolveSpec = function (e, t){return function(r){var n=r.specActions,o=r.specSelectors,a=r.errActions,u=r.fn,i=u.fetch,s=u.resolve,c=u.AST;&#x22;undefined
-&#x22;==typeof e&#x26;&#x26;(e=o.specJson()),&#x22;undefined&#x22;==typeof t&#x26;&#x26;(t=o.url());var l=c.getLineNumberForPath,p=o.specStr();return s({fetch:i,spec
+    <li>description and source-code<pre class="apidocCodePre">resolveSpec = function (e, t){return function(r){var n=r.specActions,o=r.specSelectors,a=r.errActions,u=r.fn,i=u.fetch,s=u.resolve,l=u.AST;&#x22;undefined
+&#x22;==typeof e&#x26;&#x26;(e=o.specJson()),&#x22;undefined&#x22;==typeof t&#x26;&#x26;(t=o.url());var c=l.getLineNumberForPath,f=o.specStr();return s({fetch:i,spec
 :e,baseDoc:t}).then(function(e){var t=e.spec,r=e.errors;if(a.clear({type:&#x22;thrown&#x22;}),r.length&#x3e;0){var o=r.map(function(e){return console
-.error(e),e.line=e.fullPath?l(p,e.fullPath):null,e.path=e.fullPath?e.fullPath.join(&#x22;.&#x22;):null,e.level=&#x22;error&#x22;,e.type=&#x22;thrown&#x22;,e.source
+.error(e),e.line=e.fullPath?c(f,e.fullPath):null,e.path=e.fullPath?e.fullPath.join(&#x22;.&#x22;):null,e.level=&#x22;error&#x22;,e.type=&#x22;thrown&#x22;,e.source
 =&#x22;resolver&#x22;,Object.defineProperty(e,&#x22;message&#x22;,{enumerable:!0,value:e.message}),e});a.newThrownErrBatch(o)}return n.updateResolved
 (t)})}}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
@@ -3861,7 +3918,7 @@ u=_.default.safeLoad(e)}catch(e){return console.error(e),o.newSpecErr({source:&#
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">setRequest = function (e, t, r){return{payload:{path:e,method:t,req:r},type:C}}</pre></li>
+    <li>description and source-code<pre class="apidocCodePre">setRequest = function (e, t, r){return{payload:{path:e,method:t,req:r},type:R}}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
@@ -3874,7 +3931,7 @@ u=_.default.safeLoad(e)}catch(e){return console.error(e),o.newSpecErr({source:&#
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">setResponse = function (e, t, r){return{payload:{path:e,method:t,res:r},type:x}}</pre></li>
+    <li>description and source-code<pre class="apidocCodePre">setResponse = function (e, t, r){return{payload:{path:e,method:t,res:r},type:A}}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
@@ -3887,7 +3944,7 @@ u=_.default.safeLoad(e)}catch(e){return console.error(e),o.newSpecErr({source:&#
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">function m(e, t, r){return{type:I,payload:{scheme:e,path:t,method:r}}}</pre></li>
+    <li>description and source-code<pre class="apidocCodePre">function m(e, t, r){return{type:z,payload:{scheme:e,path:t,method:r}}}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
@@ -3901,7 +3958,7 @@ u=_.default.safeLoad(e)}catch(e){return console.error(e),o.newSpecErr({source:&#
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function s(e){if(!e||&#x22;object&#x22;!==(&#x22;undefined&#x22;==typeof e?&#x22;undefined&#x22;:b(e)))throw new Error(&#x22;updateJson must only accept a simple JSON
- object&#x22;);return{type:P,payload:e}}</pre></li>
+ object&#x22;);return{type:S,payload:e}}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
@@ -3914,7 +3971,7 @@ u=_.default.safeLoad(e)}catch(e){return console.error(e),o.newSpecErr({source:&#
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">function u(e){return{type:N,payload:e}}</pre></li>
+    <li>description and source-code<pre class="apidocCodePre">function u(e){return{type:U,payload:e}}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
@@ -3927,8 +3984,8 @@ u=_.default.safeLoad(e)}catch(e){return console.error(e),o.newSpecErr({source:&#
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">function a(e){return e instanceof Error?{type:w,error:!0,payload:e}:&#x22;string&#x22;==typeof e?{type:w,payload:e.replace(/\t/g,&#x22;  &#x22;)||&#x22;&#x22;}:{
-type:w,payload:&#x22;&#x22;}}</pre></li>
+    <li>description and source-code<pre class="apidocCodePre">function a(e){return e instanceof Error?{type:O,error:!0,payload:e}:&#x22;string&#x22;==typeof e?{type:O,payload:e.replace(/\t/g,&#x22;  &#x22;)||&#x22;&#x22;}:{
+type:O,payload:&#x22;&#x22;}}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
@@ -3941,7 +3998,7 @@ type:w,payload:&#x22;&#x22;}}</pre></li>
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">function i(e){return{type:O,payload:e}}</pre></li>
+    <li>description and source-code<pre class="apidocCodePre">function i(e){return{type:T,payload:e}}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
@@ -3954,7 +4011,7 @@ type:w,payload:&#x22;&#x22;}}</pre></li>
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">function l(e){return{type:S,payload:{pathMethod:e}}}</pre></li>
+    <li>description and source-code<pre class="apidocCodePre">function c(e){return{type:C,payload:{pathMethod:e}}}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
@@ -4068,7 +4125,7 @@ type:w,payload:&#x22;&#x22;}}</pre></li>
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">spec_set_response = function (e, t){var r=t.payload,n=r.res,o=r.path,a=r.method,u=void 0;u=n.error?Object.assign({error:!0},n.err):n,u.headers=u.headers
-||{};var i=e.setIn([&#x22;responses&#x22;,o,a],(0,s.fromJSOrdered)(u));return n.data instanceof l.default.Blob&#x26;&#x26;(i=i.setIn([&#x22;responses&#x22;,o,
+||{};var i=e.setIn([&#x22;responses&#x22;,o,a],(0,s.fromJSOrdered)(u));return n.data instanceof c.default.Blob&#x26;&#x26;(i=i.setIn([&#x22;responses&#x22;,o,
 a,&#x22;text&#x22;],n.data)),i}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -4108,9 +4165,9 @@ a,&#x22;text&#x22;],n.data)),i}</pre></li>
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">spec_update_param = function (e, t){var r=t.payload,n=r.path,o=r.paramName,u=r.value,c=r.isXml;return e.updateIn([&#x22;resolved&#x22;,&#x22;paths&#x22;].concat(a(n),[&#x22;parameters
-&#x22;]),(0,i.fromJS)([]),function(e){var t=e.findIndex(function(e){return e.get(&#x22;name&#x22;)===o});return u instanceof l.default.File||(u
-=(0,s.fromJSOrdered)(u)),e.setIn([t,c?&#x22;value_xml&#x22;:&#x22;value&#x22;],u)})}</pre></li>
+    <li>description and source-code<pre class="apidocCodePre">spec_update_param = function (e, t){var r=t.payload,n=r.path,o=r.paramName,u=r.value,l=r.isXml;return e.updateIn([&#x22;resolved&#x22;,&#x22;paths&#x22;].concat(a(n),[&#x22;parameters
+&#x22;]),(0,i.fromJS)([]),function(e){var t=e.findIndex(function(e){return e.get(&#x22;name&#x22;)===o});return u instanceof c.default.File||(u
+=(0,s.fromJSOrdered)(u)),e.setIn([t,l?&#x22;value_xml&#x22;:&#x22;value&#x22;],u)})}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
@@ -4217,7 +4274,7 @@ a,&#x22;text&#x22;],n.data)),i}</pre></li>
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">canExecuteScheme = function (e, t, r){return[&#x22;http&#x22;,&#x22;https&#x22;].indexOf(A(e,t,r))&#x3e;-1}</pre></li>
+    <li>description and source-code<pre class="apidocCodePre">canExecuteScheme = function (e, t, r){return[&#x22;http&#x22;,&#x22;https&#x22;].indexOf(R(e,t,r))&#x3e;-1}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
@@ -4252,8 +4309,8 @@ a,&#x22;text&#x22;],n.data)),i}</pre></li>
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">function s(e, t){var r=b(e).getIn([&#x22;paths&#x22;].concat(n(t)),(0,f.fromJS)({})),o=r.get(&#x22;parameters&#x22;)||new f.List,a=i(o,&#x22;file&#x22;)?&#x22;multipart
-/form-data&#x22;:u(o,&#x22;formData&#x22;)?&#x22;application/x-www-form-urlencoded&#x22;:r.get(&#x22;consumes_value&#x22;);return(0,f.fromJS)({requestContentType:a
+    <li>description and source-code<pre class="apidocCodePre">function s(e, t){var r=b(e).getIn([&#x22;paths&#x22;].concat(n(t)),(0,p.fromJS)({})),o=r.get(&#x22;parameters&#x22;)||new p.List,a=i(o,&#x22;file&#x22;)?&#x22;multipart
+/form-data&#x22;:u(o,&#x22;formData&#x22;)?&#x22;application/x-www-form-urlencoded&#x22;:r.get(&#x22;consumes_value&#x22;);return(0,p.fromJS)({requestContentType:a
 ,responseContentType:r.get(&#x22;produces_value&#x22;)})}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -4324,7 +4381,7 @@ a,&#x22;text&#x22;],n.data)),i}</pre></li>
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">function o(e, t, r){var o=b(e).getIn([&#x22;paths&#x22;].concat(n(t),[&#x22;parameters&#x22;]),(0,f.fromJS)([]));return o.filter(function(e){return f.
+    <li>description and source-code<pre class="apidocCodePre">function o(e, t, r){var o=b(e).getIn([&#x22;paths&#x22;].concat(n(t),[&#x22;parameters&#x22;]),(0,p.fromJS)([]));return o.filter(function(e){return p.
 Map.isMap(e)&#x26;&#x26;e.get(&#x22;name&#x22;)===r}).first()}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -4426,7 +4483,7 @@ Map.isMap(e)&#x26;&#x26;e.get(&#x22;name&#x22;)===r}).first()}</pre></li>
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">function c(e, t){return b(e).getIn([&#x22;paths&#x22;].concat(n(t),[&#x22;consumes&#x22;]),(0,f.fromJS)({}))}</pre></li>
+    <li>description and source-code<pre class="apidocCodePre">function l(e, t){return b(e).getIn([&#x22;paths&#x22;].concat(n(t),[&#x22;consumes&#x22;]),(0,p.fromJS)({}))}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
@@ -4439,7 +4496,8 @@ Map.isMap(e)&#x26;&#x26;e.get(&#x22;name&#x22;)===r}).first()}</pre></li>
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">operationScheme = function (e, t, r){return e.getIn([&#x22;scheme&#x22;,t,r])||e.getIn([&#x22;scheme&#x22;,&#x22;_defaultScheme&#x22;])||&#x22;http&#x22;}</pre></li>
+    <li>description and source-code<pre class="apidocCodePre">operationScheme = function (e, t, r){var n=e.get(&#x22;url&#x22;),o=n.match(/^([a-z][a-z0-9+\-.]*):/),a=Array.isArray(o)?o[1]:null;return e.getIn([&#x22;scheme&#x22;,t,
+r])||e.getIn([&#x22;scheme&#x22;,&#x22;_defaultScheme&#x22;])||a||&#x22;http&#x22;}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
@@ -4518,8 +4576,8 @@ Map.isMap(e)&#x26;&#x26;e.get(&#x22;name&#x22;)===r}).first()}</pre></li>
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">function a(e, t, r){var o=b(e).getIn([&#x22;paths&#x22;].concat(n(t),[&#x22;parameters&#x22;]),(0,f.fromJS)([]));return o.reduce(function(e,t){var n=r
-&#x26;&#x26;&#x22;body&#x22;===t.get(&#x22;in&#x22;)?t.get(&#x22;value_xml&#x22;):t.get(&#x22;value&#x22;);return e.set(t.get(&#x22;name&#x22;),n)},(0,f.fromJS)({}))}</pre></li>
+    <li>description and source-code<pre class="apidocCodePre">function a(e, t, r){var o=b(e).getIn([&#x22;paths&#x22;].concat(n(t),[&#x22;parameters&#x22;]),(0,p.fromJS)([]));return o.reduce(function(e,t){var n=r
+&#x26;&#x26;&#x22;body&#x22;===t.get(&#x22;in&#x22;)?t.get(&#x22;value_xml&#x22;):t.get(&#x22;value&#x22;);return e.set(t.get(&#x22;name&#x22;),n)},(0,p.fromJS)({}))}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
@@ -4532,8 +4590,8 @@ Map.isMap(e)&#x26;&#x26;e.get(&#x22;name&#x22;)===r}).first()}</pre></li>
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">function u(e){var t=arguments.length&#x3e;1&#x26;&#x26;void 0!==arguments[1]?arguments[1]:&#x22;&#x22;;if(f.List.isList(e))return e.some(function(e){return
- f.Map.isMap(e)&#x26;&#x26;e.get(&#x22;in&#x22;)===t})}</pre></li>
+    <li>description and source-code<pre class="apidocCodePre">function u(e){var t=arguments.length&#x3e;1&#x26;&#x26;void 0!==arguments[1]?arguments[1]:&#x22;&#x22;;if(p.List.isList(e))return e.some(function(e){return
+ p.Map.isMap(e)&#x26;&#x26;e.get(&#x22;in&#x22;)===t})}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
@@ -4546,8 +4604,8 @@ Map.isMap(e)&#x26;&#x26;e.get(&#x22;name&#x22;)===r}).first()}</pre></li>
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">function i(e){var t=arguments.length&#x3e;1&#x26;&#x26;void 0!==arguments[1]?arguments[1]:&#x22;&#x22;;if(f.List.isList(e))return e.some(function(e){return
- f.Map.isMap(e)&#x26;&#x26;e.get(&#x22;type&#x22;)===t})}</pre></li>
+    <li>description and source-code<pre class="apidocCodePre">function i(e){var t=arguments.length&#x3e;1&#x26;&#x26;void 0!==arguments[1]?arguments[1]:&#x22;&#x22;;if(p.List.isList(e))return e.some(function(e){return
+ p.Map.isMap(e)&#x26;&#x26;e.get(&#x22;type&#x22;)===t})}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
@@ -4604,7 +4662,7 @@ Map.isMap(e)&#x26;&#x26;e.get(&#x22;name&#x22;)===r}).first()}</pre></li>
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">requestFor = function (e, t, r){return k(e).getIn([t,r],null)}</pre></li>
+    <li>description and source-code<pre class="apidocCodePre">requestFor = function (e, t, r){return A(e).getIn([t,r],null)}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
@@ -4863,7 +4921,7 @@ Map.isMap(e)&#x26;&#x26;e.get(&#x22;name&#x22;)===r}).first()}</pre></li>
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">tagDetails = function (e, t){var r=T(e)||(0,f.List)();return r.filter(f.Map.isMap).find(function(e){return e.get(&#x22;name&#x22;)===t},(0,f.Map)())}</pre></li>
+    <li>description and source-code<pre class="apidocCodePre">tagDetails = function (e, t){var r=T(e)||(0,p.List)();return r.filter(p.Map.isMap).find(function(e){return e.get(&#x22;name&#x22;)===t},(0,p.Map)())}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
@@ -4942,7 +5000,7 @@ Map.isMap(e)&#x26;&#x26;e.get(&#x22;name&#x22;)===r}).first()}</pre></li>
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">validateBeforeExecute = function (e, t){var r=b(e).getIn([&#x22;paths&#x22;].concat(n(t),[&#x22;parameters&#x22;]),(0,f.fromJS)([])),o=!0;return r.forEach(function(e){var t=
+    <li>description and source-code<pre class="apidocCodePre">validateBeforeExecute = function (e, t){var r=b(e).getIn([&#x22;paths&#x22;].concat(n(t),[&#x22;parameters&#x22;]),(0,p.fromJS)([])),o=!0;return r.forEach(function(e){var t=
 e.get(&#x22;errors&#x22;);t&#x26;&#x26;t.count()&#x26;&#x26;(o=!1)}),o}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -5027,10 +5085,10 @@ e.get(&#x22;errors&#x22;);t&#x26;&#x26;t.count()&#x26;&#x26;(o=!1)}),o}</pre></l
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">function t(){var e,r,n,u;o(this,t);for(var i=arguments.length,s=Array(i),c=0;c&#x3c;i;c++)s[c]=arguments[c];return r=n=a(this,(e=t.__proto__
+    <li>description and source-code<pre class="apidocCodePre">function t(){var e,r,n,u;o(this,t);for(var i=arguments.length,s=Array(i),l=0;l&#x3c;i;l++)s[l]=arguments[l];return r=n=a(this,(e=t.__proto__
 ||Object.getPrototypeOf(t)).call.apply(e,[this].concat(s))),n.onDragFinished=function(){var e=n.props,t=e.threshold,r=e.layoutActions
-,o=n.refs.splitPane.state,a=o.position,u=o.draggedSize;n.draggedSize=u;var i=a&#x3c;=t,s=u&#x3c;=t;r.changeMode(f,i?y:s?d:h)},n.sizeFromMode
-=function(e,t){return e===d?(n.draggedSize=null,&#x22;0px&#x22;):e===y?(n.draggedSize=null,&#x22;100%&#x22;):n.draggedSize||t},u=r,a(n,u)}</pre></li>
+,o=n.refs.splitPane.state,a=o.position,u=o.draggedSize;n.draggedSize=u;var i=a&#x3c;=t,s=u&#x3c;=t;r.changeMode(p,i?h:s?d:y)},n.sizeFromMode
+=function(e,t){return e===d?(n.draggedSize=null,&#x22;0px&#x22;):e===h?(n.draggedSize=null,&#x22;100%&#x22;):n.draggedSize||t},u=r,a(n,u)}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
@@ -5049,7 +5107,7 @@ e.get(&#x22;errors&#x22;);t&#x26;&#x26;t.count()&#x26;&#x26;(o=!1)}),o}</pre></l
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">getComponent = function (e, t, r, n, o){if(&#x22;string&#x22;!=typeof n)throw new TypeError(&#x22;Need a string, to fetch a component. Was given a &#x22;+(&#x22;undefined&#x22;==
-typeof n?&#x22;undefined&#x22;:i(n)));var a=r(n);return a?o?&#x22;root&#x22;===o?g(e,a,t()):g(e,a):w(a):(e().log.warn(&#x22;Could not find component&#x22;,n),
+typeof n?&#x22;undefined&#x22;:i(n)));var a=r(n);return a?o?&#x22;root&#x22;===o?g(e,a,t()):g(e,a):j(a):(e().log.warn(&#x22;Could not find component&#x22;,n),
 null)}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -5064,9 +5122,9 @@ null)}</pre></li>
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">makeMappedContainer = function (e, t, r, n, i, s){return function(t){function n(t,r){o(this,n);var u=a(this,(n.__proto__||Object.getPrototypeOf(n)).call(this
-,t,r));return _(e,s,t,{}),u}return u(n,t),c(n,[{key:&#x22;componentWillReceiveProps&#x22;,value:function(t){_(e,s,t,this.props)}},{key:&#x22;render
-&#x22;,value:function(){var e=(0,m.default)(this.props,s?Object.keys(s):[]),t=r(i,&#x22;root&#x22;);return p.default.createElement(t,e)}}]),n}(
-l.Component)}</pre></li>
+,t,r));return _(e,s,t,{}),u}return u(n,t),l(n,[{key:&#x22;componentWillReceiveProps&#x22;,value:function(t){_(e,s,t,this.props)}},{key:&#x22;render
+&#x22;,value:function(){var e=(0,m.default)(this.props,s?Object.keys(s):[]),t=r(i,&#x22;root&#x22;);return f.default.createElement(t,e)}}]),n}(
+c.Component)}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
@@ -5079,7 +5137,7 @@ l.Component)}</pre></li>
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">render = function (e, t, r, n, o){var a=document.querySelector(o),u=r(e,t,n,&#x22;App&#x22;,&#x22;root&#x22;);d.default.render(p.default.createElement(u,null),a)}</pre></li>
+    <li>description and source-code<pre class="apidocCodePre">render = function (e, t, r, n, o){var a=document.querySelector(o),u=r(e,t,n,&#x22;App&#x22;,&#x22;root&#x22;);d.default.render(f.default.createElement(u,null),a)}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
